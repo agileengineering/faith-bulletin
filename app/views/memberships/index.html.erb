@@ -30,18 +30,18 @@
   <% end %>
 
   <%= form_for [@group, @new_member] do |f| %>
-    <div class="field">
-      <%= f.label :user_id, 'Member' %><br />
-      <%= f.collection_select(:user_id, User.order(:email), :id, :email, include_blank: true) %>
+    <div class="field form-group">
+      <%= f.label :user_id, 'Member' %>
+      <%= f.collection_select(:user_id, User.order(:email), :id, :email, { include_blank: true },  { class: "form-control" }) %>
     </div>
 
-    <div class="field">
-      <%= f.label :role, 'Role' %><br />
-      <%= f.select(:role, Membership.roles.keys.map {|role| [role.titleize,role]}) %>
+    <div class="field form-group">
+      <%= f.label :role, 'Role' %>
+      <%= f.select(:role, Membership.roles.keys.map {|role| [role.titleize,role]}, {}, { class: "form-control" }) %>
     </div>
 
     <div class="actions">
-        <%= f.submit 'Save' %>
+        <%= f.submit 'Save', class: 'btn btn-default' %>
     </div>
   <% end %>
 <% end %>
