@@ -10,6 +10,30 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ body {
+   padding-top: 50px;
+ }
+
+ .starter-template {
+   padding: 40px 15px;
+   text-align: center;
+}
+
+/*!
+ *  * IE10 viewport hack for Surface/desktop Windows 8 bug
+ *   * Copyright 2014-2015 Twitter, Inc.
+ *    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ *     */
+
+/*
+ *  * See the Getting Started docs for more information:
+ *   * http://getbootstrap.com/getting-started/#support-ie10-width
+ *    */
+@-ms-viewport     { width: device-width; }
+@-o-viewport      { width: device-width; }
+@viewport         { width: device-width; }
+
