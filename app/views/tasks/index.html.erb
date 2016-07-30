@@ -1,0 +1,21 @@
+<h1>Tasks</h1>
+
+<table class="table table-hover table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Deadline</th>
+    <th>Assigned to</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+  <%- @tasks.each do |task| %>
+    <tr style="text-align: left;">
+      <td><%= task.title %></td>
+      <td><%= task.deadline.to_formatted_s(:long) %></td>
+      <td><%= task.user.email %></td>
+      <td></td>
+      <td></td>
+    </tr>
+  <%- end %>
+</table>
+
