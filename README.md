@@ -29,6 +29,7 @@ Things you may want to cover:
 
 ### Window Setup Detials
 After installing PostGres and utilities:
+
 1.  Run pgAdmin III
 2.  Login to the default database with password used at install
 3.  Right-Click ServerGroups > Servers > PostgreSQL ... > Login Roles
