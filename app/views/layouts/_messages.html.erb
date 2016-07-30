@@ -1,0 +1,13 @@
+<div class="page messages">
+  <%- flash.each do |type, msg| %>
+    <%- if msg.is_a?(String) %>
+        <div class="alert <%= "#{bootstrap_class_for(type)}" %> alert-dismissable" role="alert">
+        <button class="close" type="button" data-dismiss="alert">
+          <span aria-hidden="true">×</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <%= content_tag :div, msg, id: "flash_#{type}" %>
+      </div>
+    <%- end %>
+  <%- end %>
+</div>
