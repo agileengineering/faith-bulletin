@@ -24,7 +24,7 @@
             <% end %>
           <% end %>
       </td>
-      <td></td>
+      <td><%= task.status.titleize %></td>
       <td><%= link_to 'Edit', edit_task_path(task) %></td>
     </tr>
   <% end %>
