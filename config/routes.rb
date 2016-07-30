@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :tasks do
     member do
       put 'claim'
+      put 'mark_complete'
     end
   end
 end

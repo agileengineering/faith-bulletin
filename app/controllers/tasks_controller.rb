@@ -33,7 +33,17 @@ class TasksController < ApplicationController
     if @task.claim(current_user) and @task.save
       redirect_to tasks_path, notice: 'Thanks for volunteering!'
     else
-      render action: 'index', alert: 'There was a problem claiming the task.'
+      render action: 'index', alert: 'There was a problem assigning the task.'
+    end
+  end
+
+  def mark_complete
+    @task = Task.find(params[:id])
+
+    if @task.complete!
+      redirect_to tasks_path, notice: 'Thanks so much for filling a need!'
+    else
+      render action: 'index', alert: 'There was a problem marking the task complete.'
     end
   end
 
