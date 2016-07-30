@@ -11,13 +11,13 @@
   <% @tasks.each do |task| %>
     <tr style="text-align: left;">
       <td>
-        <%= task.title %><br />
+        <strong><%= task.title %></strong><br />
         <%= task.description %>
       </td>
       <td><%= task.deadline.to_formatted_s(:long) %></td>
-      <td><%= task.user.email %></td>
+      <td><% if task.user %><%= task.user.email %><% end %></td>
       <td></td>
-      <td></td>
+      <td><%= link_to 'Edit', edit_task_path(task) %></td>
     </tr>
   <% end %>
 </table>
