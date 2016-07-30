@@ -53,3 +53,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Load environment variables from .env file. Read more: https://github.com/bkeepers/dotenv
 gem 'dotenv-rails', :groups => [:development, :test]
 
+# Use devise for authentication
+gem 'devise'
+
