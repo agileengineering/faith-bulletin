@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :tasks
   has_many :memberships
   has_many :groups, through: :memberships
+
+  def is_owner?(group)
+    self.memberships.where(role: :owner).map(&:group).include? group
+  end
 end
