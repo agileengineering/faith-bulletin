@@ -1,0 +1,77 @@
+<h1>Tasks</h1>
+
+<% @tasks.each do |task| %>
+  <div class="panel panel-default">
+    <div class="row panel-body">
+      <div class="col-md-4">
+        <strong><%= task.title %></strong><br />
+        <%= task.description %>
+      </div>
+      <div class="col-md-2">
+          <%= task.deadline.to_formatted_s(:long) %>
+      </div>
+      <div class="col-md-2">
+          <% if task.user %>
+            <%= task.user.email %>
+          <% elsif user_signed_in? %>
+            <%= form_for task, url: claim_task_path(task), method: 'put' do |f| %>
+              <%= f.submit "Sign Up", class: 'btn btn-xs' %>
+            <% end %>
+          <% end %>
+      </div>
+      <div class="col-md-2">
+        <% if task.incomplete? %>
+          <%= form_for task, url: mark_complete_task_path(task), method: 'put' do |f| %>
+            <%= f.submit "Mark Complete", class: 'btn btn-xs' %>
+          <% end %>
+        <% else %>
+          <%= task.status.titleize %>
+        <% end %>
+      </div>
+      <div class="col-md-2">
+        <%= link_to 'Edit', edit_task_path(task) %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<h3>Create new task</h3>
+
+<% if @task.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <h3><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h3>
+    <ul>
+      <% @venue.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @task do |f| %>
+  <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title, autofocus: true %>
+  </div>
+
+  <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, autofocus: true %>
+  </div>
+
+  <div class="field">
+      <%= f.label :deadline %><br />
+      <%= f.datetime_select :deadline, autofocus: true %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :user_id, 'Assigned to' %><br />
+    <%= f.collection_select(:user_id, User.order(:email), :id, :email, include_blank: true) %>
+  </div>
+
+  <div class="actions">
+      <%= f.submit 'Save' %>
+  </div>
+<% end %>
+
