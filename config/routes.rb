@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   root :to => 'pages#home'
 
+  resources :groups
+
   resources :tasks do
     member do
       put 'claim'

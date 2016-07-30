@@ -1,0 +1,17 @@
+<h1>Groups</h1>
+
+<%= link_to new_group_path do %>
+    <button class="btn">New Group</button>
+<% end %>
+
+<% @groups.each do |group| %>
+  <div class="panel panel-default">
+    <div class="row panel-body">
+      <div class="col-md-4">
+        <strong><%= link_to group.title, group_path(group) %></strong><br />
+        <%= group.description %>
+      </div>
+    </div>
+  </div>
+<% end %>
+

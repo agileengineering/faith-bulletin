@@ -16,6 +16,9 @@
         </li>
         <%- if user_signed_in? %>
           <li>
+            <%= link_to 'Groups', groups_path %>
+          </li>
+          <li>
             <%= link_to 'Tasks', tasks_path %>
           </li>
           <li class="dropdown">
