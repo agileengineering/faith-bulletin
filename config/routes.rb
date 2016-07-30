@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   root :to => 'pages#home'
 
-  resources :groups
+  resources :groups do
+    resources :memberships
+  end
 
   resources :tasks do
     member do

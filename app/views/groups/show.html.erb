@@ -1,0 +1,17 @@
+<%= link_to groups_path do %>
+  &#8592; Back to Groups
+<% end %>
+
+<h1><%= @group.title %></h1>
+<p><%= @group.description %></p>
+
+<h3><%= @group.memberships.count %> Members</h3>
+<% if current_user and current_user.groups.include? @group %>
+  <%= link_to 'All Members', group_memberships_path(@group) %>
+  <ul class="list-unstyled">
+    <% @group.memberships.each do |member| %>
+      <li><%= member.user.email %></li>
+    <% end %>
+  </ul>
+<% end %>
+

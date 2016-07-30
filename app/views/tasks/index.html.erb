@@ -39,9 +39,9 @@
 
 <% if @task.errors.any? %>
   <div id="error_explanation" class="alert alert-danger">
-    <h3><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h3>
+    <h3><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h3>
     <ul>
-      <% @venue.errors.full_messages.each do |msg| %>
+      <% @task.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
