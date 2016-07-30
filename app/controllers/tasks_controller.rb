@@ -27,6 +27,16 @@ class TasksController < ApplicationController
     end
   end
 
+  def claim
+    @task = Task.find(params[:id])
+
+    if @task.claim(current_user) and @task.save
+      redirect_to tasks_path, notice: 'Thanks for volunteering!'
+    else
+      render action: 'index', alert: 'There was a problem claiming the task.'
+    end
+  end
+
 private
 
   def task_params

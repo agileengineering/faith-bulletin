@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   root :to => 'pages#home'
 
-  resources :tasks
+  resources :tasks do
+    member do
+      put 'claim'
+    end
+  end
 end
 

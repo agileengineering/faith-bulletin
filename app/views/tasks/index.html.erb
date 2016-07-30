@@ -15,7 +15,15 @@
         <%= task.description %>
       </td>
       <td><%= task.deadline.to_formatted_s(:long) %></td>
-      <td><% if task.user %><%= task.user.email %><% end %></td>
+      <td>
+          <% if task.user %>
+            <%= task.user.email %>
+          <% elsif user_signed_in? %>
+            <%= form_for task, url: claim_task_path(task), method: 'put' do |f| %>
+              <%= f.submit "Sign Up", class: 'btn btn-xs' %>
+            <% end %>
+          <% end %>
+      </td>
       <td></td>
       <td><%= link_to 'Edit', edit_task_path(task) %></td>
     </tr>
