@@ -56,3 +56,6 @@ gem 'dotenv-rails', :groups => [:development, :test]
 # Use devise for authentication
 gem 'devise'
 
+# Use pundit for roles and permissions
+gem "pundit"
+
