@@ -1,0 +1,44 @@
+<%= link_to group_path(@group) do %>
+  &#8592; Back to Group
+<% end %>
+
+<h1><%= @group.title %></h1>
+<h2>Categories</h2>
+
+<% @categories.each do |category| %>
+  <div class="panel panel-default">
+    <div class="row panel-body">
+      <div class="col-md-4">
+        <%= category.title %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+<% if current_user.is_owner?(@group) %>
+  <h3>Add New Category</h3>
+
+  <% if @new_category.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h3><%= pluralize(@new_category.errors.count, "error") %> prohibited this category from being saved:</h3>
+      <ul>
+        <% @new_category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_for [@group, @new_category] do |f| %>
+    <div class="field form-group">
+      <%= f.label :title, 'Category' %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit 'Save', class: 'btn btn-default' %>
+    </div>
+  <% end %>
+<% end %>
+

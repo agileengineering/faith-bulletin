@@ -1,6 +1,6 @@
-class Task < ApplicationRecord
-  belongs_to :user,     optional: true
-  belongs_to :category
+class Category < ApplicationRecord
+  belongs_to :group
+  has_many   :categories
 
   enum status: {
     incomplete:  1,

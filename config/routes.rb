@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :groups do
     resources :memberships
+    resources :categories
   end
 
   resources :tasks do
