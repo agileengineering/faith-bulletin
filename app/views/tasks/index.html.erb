@@ -8,14 +8,57 @@
     <th>Status</th>
     <th></th>
   </tr>
-  <%- @tasks.each do |task| %>
+  <% @tasks.each do |task| %>
     <tr style="text-align: left;">
-      <td><%= task.title %></td>
+      <td>
+        <%= task.title %><br />
+        <%= task.description %>
+      </td>
       <td><%= task.deadline.to_formatted_s(:long) %></td>
       <td><%= task.user.email %></td>
       <td></td>
       <td></td>
     </tr>
-  <%- end %>
+  <% end %>
 </table>
+
+<h3>Create new task</h3>
+
+<% if @task.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <h3><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h3>
+    <ul>
+      <% @venue.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @task do |f| %>
+  <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title, autofocus: true %>
+  </div>
+
+  <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, autofocus: true %>
+  </div>
+
+  <div class="field">
+      <%= f.label :deadline %><br />
+      <%= f.datetime_select :deadline, autofocus: true %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :user_id, 'Assigned to' %><br />
+    <%= f.collection_select(:user_id, User.order(:email), :id, :email, include_blank: true) %>
+  </div>
+
+  <div class="actions">
+      <%= f.submit 'Save' %>
+  </div>
+<% end %>
 
