@@ -71,7 +71,7 @@ header {
 
 /* GENERAL */
 body {
-  background-color: #CFD1D3;
+  background-color: #f7f7f7;
 }
 
 .tiny {
@@ -132,6 +132,15 @@ label {
   padding: 5px;
 }
 
+/* HOME JUMBOTRON */
+.jumbotron {
+  background-color: #6D6Ac9;
+  margin-top: 20px;
+}
+.jumbotron h1, .jumbotron .lead {
+  color: #ffffff;
+}
+
 /* GROUP SEARCH */
 .group-address {
   margin-top: 20px;
@@ -166,6 +175,14 @@ label {
 
 .task-section {
   margin-top: 40px;
+}
+
+.task_card .panel-body {
+  background-color: #f7f7f7;
+}
+
+.tab-content {
+  background-color: #FFF;
 }
 
 /*!
