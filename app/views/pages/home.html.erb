@@ -1,0 +1,13 @@
+<h1>FaithBulletin</h1>
+<p class="lead">Get organized. Be efficient. Be impactful.</p>
+
+<% @groups.each do |group| %>
+  <div class="panel panel-default">
+    <div class="row panel-body">
+      <div class="col-md-4">
+        <strong><%= group.title %></strong><br />
+      </div>
+    </div>
+  </div>
+<% end %>
+

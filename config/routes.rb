@@ -5,11 +5,16 @@ Rails.application.routes.draw do
 
   root :to => 'pages#home'
 
-  resources :tasks do
-    member do
-      put 'claim'
-      put 'mark_complete'
+  resources :groups do
+    resources :memberships
+    resources :categories
+    resources :tasks do
+      member do
+        put 'claim'
+        put 'mark_complete'
+      end
     end
   end
+
 end
 

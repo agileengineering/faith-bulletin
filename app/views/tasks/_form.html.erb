@@ -1,28 +1,32 @@
-<%= form_for @task do |f| %>
-  
-
+<%= form_for [@group, @task] do |f| %>
   <div class="field form-group">
-      <%= f.label :title %><br />
+      <%= f.label :title %>
       <%= f.text_field :title, autofocus: true, class: 'form-control' %>
   </div>
 
   <div class="field form-group">
-      <%= f.label :description %><br />
-      <%= f.text_area :description, autofocus: true %>
+      <%= f.label :description %>
+      <%= f.text_area :description, autofocus: true, class: 'form-control' %>
   </div>
 
   <div class="field form-group">
-      <%= f.label :deadline %><br />
-      <%= f.datetime_select :deadline, autofocus: true %>
+      <%= f.label :deadline %>
+      <%= f.datetime_select :deadline, autofocus: true, class: 'form-control' %>
   </div>
 
 
   <div class="field form-group">
-    <%= f.label :user_id, 'Assigned to' %><br />
-    <%= f.collection_select(:user_id, User.order(:email), :id, :email, include_blank: true) %>
+    <%= f.label :user_id, 'Assigned to' %>
+    <%= f.collection_select(:user_id, User.order(:email), :id, :email, { include_blank: true }, { class: 'form-control' }) %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :category_id, 'Category' %>
+    <%= f.collection_select(:category_id, @group.categories.order(:id), :id, :title, { }, { class: 'form-control' }) %>
   </div>
 
   <div class="actions">
-      <%= f.submit 'Save' %>
+      <%= f.submit 'Save', class: 'btn btn-default' %>
   </div>
 <% end %>
+

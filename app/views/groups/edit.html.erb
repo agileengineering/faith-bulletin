@@ -1,0 +1,10 @@
+<%= link_to groups_path do %>
+  &#8592; Back to Groups
+<% end %>
+
+<h2>Edit Group: <%= @group.title %></h2>
+
+<%= render 'form' %>
+
+<%= link_to 'Cancel', groups_path %>
+

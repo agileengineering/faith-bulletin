@@ -1,0 +1,52 @@
+<%= link_to group_path(@group) do %>
+  &#8592; Back to Group
+<% end %>
+
+<h1><%= @group.title %></h1>
+<h2>Members</h2>
+
+<% @memberships.each do |membership| %>
+  <div class="panel panel-default">
+    <div class="row panel-body">
+      <div class="col-md-4">
+        <%= membership.user.email %>
+      </div>
+      <div class="col-md-2">
+        <%= membership.role %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+<% if current_user.is_owner?(@group) %>
+  <h3>Add New Member</h3>
+
+  <% if @new_member.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h3><%= pluralize(@new_member.errors.count, "error") %> prohibited this member from being saved:</h3>
+      <ul>
+        <% @new_member.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_for [@group, @new_member] do |f| %>
+    <div class="field form-group">
+      <%= f.label :user_id, 'Member' %>
+      <%= f.collection_select(:user_id, User.order(:email), :id, :email, { include_blank: true },  { class: "form-control" }) %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :role, 'Role' %>
+      <%= f.select(:role, Membership.roles.keys.map {|role| [role.titleize,role]}, {}, { class: "form-control" }) %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit 'Save', class: 'btn btn-default' %>
+    </div>
+  <% end %>
+<% end %>
+

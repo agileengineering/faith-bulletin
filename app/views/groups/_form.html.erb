@@ -1,0 +1,50 @@
+<%= form_for @group do |f| %>
+  <div class="field form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group">
+      <%= f.label :tagline %>
+      <%= f.text_field :tagline, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group">
+      <%= f.label :address %>
+      <%= f.text_area :address, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group">
+      <%= f.label :website_url %>
+      <%= f.text_field :website_url, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group">
+      <%= f.label :facebook_page_url %>
+      <%= f.text_field :facebook_page_url, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group">
+      <%= f.label :twitter_handle %>
+      <%= f.text_field :twitter_handle, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group">
+      <%= f.label :instagram_handle %>
+      <%= f.text_field :instagram_handle, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :profile_pic %>
+    <%= f.file_field :profile_pic %>
+  </div>
+
+  <div class="actions">
+      <%= f.submit 'Save', class: 'btn btn-default' %>
+  </div>
+<% end %>

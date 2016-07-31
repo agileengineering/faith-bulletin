@@ -58,3 +58,5 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'devise'
 
 gem 'sprockets-rails', require: 'sprockets/railtie'
+gem "paperclip", "~> 5.0.0"
+

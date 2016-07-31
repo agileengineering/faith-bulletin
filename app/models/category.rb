@@ -1,13 +1,11 @@
-class Task < ApplicationRecord
-  belongs_to :user,     optional: true
-  belongs_to :category
+class Category < ApplicationRecord
+  belongs_to :group
+  has_many   :tasks
 
   enum status: {
     incomplete:  1,
     complete:    2,
   }
-
-  scope :unassigned, -> { where(user: nil) }
 
   validates :title,           presence: true, length: { in: 1..255 }
 
