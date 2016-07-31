@@ -21,7 +21,7 @@
     <% if user_signed_in? %>
       <h2 class="task-section">My Assignments</h2>
       <p class="white">Check out the community needs tab for volunteer opportunities.</p>
-      <% @group.tasks.where(user: current_user).each do |task| %>
+      <% @group.tasks.incomplete.where(user: current_user).each do |task| %>
         <%= render 'task_card', task: task %>
       <% end %>
     <% end %>

@@ -56,11 +56,13 @@
             My Assignments
             <small class="section-link"><%= link_to 'View All', group_tasks_path(@group) %></small>
           </h3>
-          <% @group.tasks.where(user: current_user).each do |task| %>
+          <% if @group.tasks.incomplete.where(user: current_user).each do |task| %>
             <%= render 'tasks/task_card', task: task %>
+          <% end.empty? %>
+            Check out the community needs below!
           <% end %>
           <h3>Community Needs</h3>
-          <% @group.tasks.unassigned.each do |task| %>
+          <% @group.tasks.incomplete.unassigned.each do |task| %>
             <%= render 'tasks/task_card', task: task %>
           <% end %>
         </div>
