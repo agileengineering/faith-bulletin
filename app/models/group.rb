@@ -4,7 +4,7 @@ class Group < ApplicationRecord
   has_many :categories
   has_many :tasks, through: :categories
 
-  has_attached_file :profile_pic, styles: { medium: "300x300>", small: "200x200>", thumb: "100x100>" }, default_url: "http://placehold.it/300x300"
+  has_attached_file :profile_pic, styles: { medium: "300x300>", small: "200x200>", thumb: "100x100>" }, default_url: "http://placehold.it/100x100"
   validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\Z/
 
   validates :title, presence: true, length: { in: 1..255 }
