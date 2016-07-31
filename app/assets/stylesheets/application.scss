@@ -34,7 +34,6 @@
 
 .navbar-inverse .navbar-brand {
   color: #ffffff;
-  text-shadow: 1px 1px 3px #000000;
 }
 
 .navbar-header {
@@ -72,7 +71,7 @@ header {
 
 /* GENERAL */
 body {
-  background-color: #6D6Ac9;
+  background-color: #eef0f2;
 }
 
 .tiny {
@@ -80,12 +79,8 @@ body {
   vertical-align: bottom;
 }
 
-.white {
-  color: #ffffff;
-}
-
 a {
-  color: #ffffff;
+  color: #6D6Ac9;
   text-decoration: none;
 }
 
@@ -101,9 +96,13 @@ a {
 
 /* HEADINGS */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Asul', sans-serif;  color: #ffffff;
-  color: #ffffff;
-  text-shadow: 1px 1px 3px #000000
+  font-family: 'Muli', sans-serif;  color: #ffffff;
+  color: #6D6Ac9;
+}
+
+.lead {
+  font-family: 'Muli', sans-serif;  color: #ffffff;
+  color: #6D6Ac9;
 }
 
 h1 small, h1 .small, h2 small, h2 .small, h3 small, h3 .small, h4 small, h4
@@ -120,8 +119,7 @@ small, .h2 .small, .h3 small, .h3 .small, .h4 small, .h4 .small, .h5 small, .h5
 /* FORMS */
 label {
   font-size: 1.5em;
-  color: #ffffff;
-  text-shadow: 1px 1px 3px #000000;
+  color: #6D6Ac9;
 }
 
 .field {
