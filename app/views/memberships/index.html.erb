@@ -3,7 +3,7 @@
 <% end %>
 
 <h1><%= @group.title %></h1>
-<h2 class="white">Members</h2>
+<h3>Members</h3>
 
 <% @memberships.each do |membership| %>
   <div class="panel panel-default">
@@ -44,8 +44,8 @@
       <%= f.select(:role, Membership.roles.keys.map {|role| [role.titleize,role]}, {}, { class: "form-control" }) %>
     </div>
 
-    <div class="actions">
-        <%= f.submit 'Save', class: 'btn btn-default' %>
+    <div class="actions pull-right">
+        <%= f.submit 'Save', class: 'btn btn-primary' %>
     </div>
   <% end %>
 <% end %>

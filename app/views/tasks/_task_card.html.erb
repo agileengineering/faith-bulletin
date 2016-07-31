@@ -25,11 +25,11 @@
       <div class="col-md-2">
         <% if task.user and task.incomplete? %>
           <%= form_for task, url: mark_complete_group_task_path(@group, task), method: 'put' do |f| %>
-            <%= f.submit "Mark Complete", class: 'btn btn-xs' %>
+            <%= f.submit "Mark Complete", class: 'btn btn-xs btn-primary' %>
           <% end %>
         <% elsif user_signed_in? %>
           <%= form_for task, url: claim_group_task_path(@group, task), method: 'put' do |f| %>
-            <%= f.submit "Sign Up", class: 'btn btn-xs' %>
+            <%= f.submit "Sign Up", class: 'btn btn-xs btn-primary' %>
           <% end %>
         <% elsif task.user %>
           <%= task.status.titleize %>

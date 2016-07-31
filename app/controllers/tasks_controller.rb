@@ -2,7 +2,7 @@ class TasksController < ApplicationController
 
   def index
     @group = Group.find(params[:group_id])
-    @tasks = @group.tasks.unassigned.order(:deadline)
+    @tasks = @group.tasks.incomplete.unassigned.order(:deadline)
     @task  = Task.new
   end
 

@@ -9,6 +9,8 @@ class Group < ApplicationRecord
 
   validates :title, presence: true, length: { in: 1..255 }
 
+  scope :contains, -> (query) { where("title ilike ? OR tagline ilike ? OR description ilike ? OR address ilike ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%")}
+
   def make_owner(user)
     self.memberships.create(user: user, role: :owner)
   end
