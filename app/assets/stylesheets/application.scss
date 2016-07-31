@@ -97,13 +97,14 @@ a {
 .panel-body h1, .panel-body h2, .panel-body h3, .panel-body h4 {
   color: #6D6Ac9;
   text-shadow: none;
-
-.panel-footer {
-  background: #CB7904;
-  color: #353535;
 }
 
+footer.footer, footer.footer .text-muted {
+  padding-top: 10px;
+  background-color: #6D6Ac9 !important;
+  color: #e7e7e7;
 }
+
 
 .btn-primary {
   color: #fff;
@@ -152,7 +153,7 @@ label {
 /* HOME JUMBOTRON */
 .jumbotron {
   background-color: #6D6Ac9;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 .jumbotron h1, .jumbotron .lead {
   color: #ffffff;
