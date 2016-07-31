@@ -42,7 +42,14 @@ private
   def group_params
     params.require(:group).permit(
       :title,
-      :description
+      :description,
+      :tagline,
+      :address,
+      :website_url,
+      :facebook_page_url,
+      :twitter_handle,
+      :instagram_handle,
+      :profile_pic
     )
   end
 end
