@@ -92,6 +92,12 @@ a {
 .panel-body h1, .panel-body h2, .panel-body h3, .panel-body h4 {
   color: #6D6Ac9;
   text-shadow: none;
+
+.panel-footer {
+  background: #CB7904;
+  color: #353535;
+}
+
 }
 
 /* HEADINGS */
@@ -154,4 +160,3 @@ label {
 @-ms-viewport     { width: device-width; }
 @-o-viewport      { width: device-width; }
 @viewport         { width: device-width; }
-
