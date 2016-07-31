@@ -29,11 +29,7 @@
 .navbar-inverse
 .navbar-nav > li > a {
     color: #fff;
-
-  }
-
-
-
+}
 
 header {
   margin: auto;
@@ -46,48 +42,48 @@ header {
   background-color: #ffffff;
 }
 
- body {
+body {
   text-align: center;
   background-color: #6D6Ac9;
- }
+}
 
 
 
- h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Asul', sans-serif;  color: #ffffff;
   color: #ffffff;
   text-shadow: 1px 1px 3px #000000
- }
+}
 
 /*  color: #5D91C0;
  opacity: 0.5;
  z-index: 1;  */
 
- .navbar-inverse .navbar-brand {
-    color: #ffffff;
-    text-shadow: 1px 1px 3px #000000;
+.navbar-inverse .navbar-brand {
+  color: #ffffff;
+  text-shadow: 1px 1px 3px #000000;
 }
 
- .starter-template {
-   padding: 40px 15px;
-   text-align: center;
-  }
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
 
 label {
-font-size: 1.5em;
-color: #ffffff;
-text-shadow: 1px 1px 3px #000000;
+  font-size: 1.5em;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px #000000;
 }
 
 .navbar-header {
-margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 .messages {
-margin-top: -25px;
+  margin-top: -25px;
 }
 
 .field {
-padding: 5px;
+  padding: 5px;
 }
 
 .form-control {
@@ -100,8 +96,13 @@ padding: 5px;
 }
 
 #nonroot-header {
-  visibility: hidden;}
+  visibility: hidden;
+}
 
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
 
 /*!
  *  * IE10 viewport hack for Surface/desktop Windows 8 bug
@@ -116,3 +117,4 @@ padding: 5px;
 @-ms-viewport     { width: device-width; }
 @-o-viewport      { width: device-width; }
 @viewport         { width: device-width; }
+

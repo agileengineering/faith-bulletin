@@ -22,7 +22,7 @@
 
   <body>
     <%= render 'layouts/navigation' %>
-    <div id="nonroot-header" class="header-wrapper">
+    <div <% if current_page?('/') %>id="nonroot-header"<% end %> class="header-wrapper">
       <header>
         <%= image_tag 'logoHor.png' %>
       </header>
