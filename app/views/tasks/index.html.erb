@@ -29,8 +29,10 @@
 
   <div role="tabpanel" class="tab-pane" id="needs">
     <h2 class="task-section">Community Needs</h2>
-    <% @tasks.each do |task| %>
+    <% if @tasks.each do |task| %>
       <%= render 'task_card', task: task %>
+    <% end.empty? %>
+      There aren't any needs right now. Thanks for checking!
     <% end %>
   </div>
 
