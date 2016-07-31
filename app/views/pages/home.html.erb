@@ -1,6 +1,24 @@
 <h1>FaithBulletin</h1>
 <p class="lead">Get organized. Be efficient. Be impactful.</p>
 
+<h3>Groups In Your Area</h3>
+<%= form_tag(root_path, method: "get", class: 'search-form') do %>
+  <div class="row">
+    <div class="col-md-1">
+      <label for="q">Search</label>
+    </div>
+    <div class="col-md-9">
+      <input type="text" class="form-control" id="q" name="q" value="<%= @q %>">
+    </div>
+    <div class="col-md-1">
+      <button type="submit" class="btn btn-default">Search</button>
+    </div>
+    <div class="col-md-1">
+      <%= link_to 'Show all', root_path, class: 'clear-search' %>
+    </div>
+  </div>
+<% end %>
+
 <% @groups.each do |group| %>
   <div class="panel panel-default">
     <div class="panel-body">
@@ -12,15 +30,18 @@
           <h2><%= link_to group.title, group_path(group) %></h2>
           <p class="lead"><%= group.tagline %></p>
         </div>
+        <div class="col-md-4">
+          <p class="group-address">
+            <%= group.address %>
+          </p>
+        </div>
       </div>
 
       <div class="row">
         <div class="col-md-2">
         </div>
         <div class="col-md-4">
-          <address>
-            <%= group.address %>
-          </address>
+          <%= group.description %>
         </div>
       </div>
     </div>
