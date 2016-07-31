@@ -14,7 +14,7 @@
 !/tmp/.keep
 
 # Ignore due to conflicts between our dev environments. TODO: Fix this.
-/config/database.yml
+/config/database.*
 
 # Ignore uploaded files.
 /public/system/*
