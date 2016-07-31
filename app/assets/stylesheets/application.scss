@@ -152,9 +152,11 @@ label {
 
 /* HOME JUMBOTRON */
 .jumbotron {
-  background-color: #6D6Ac9;
   margin-top: 20px;
   text-align: center;
+}
+.jumbotron {
+  background-color: rgba(109,106,201,0.85);
 }
 .jumbotron h1, .jumbotron .lead {
   color: #ffffff;
