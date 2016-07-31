@@ -22,13 +22,15 @@
 
   <body>
     <%= render 'layouts/navigation' %>
+
     <div <% if current_page?('/') %>id="nonroot-header"<% end %> class="header-wrapper">
       <header>
         <%= image_tag 'logoHor.png' %>
       </header>
     </div>
+
     <div class="container">
-      <div class="starter-template">
+      <div class="template">
           <%= render 'layouts/messages' %>
         <%= yield %>
       </div>

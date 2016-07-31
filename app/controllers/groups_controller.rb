@@ -1,7 +1,11 @@
 class GroupsController < ApplicationController
 
   def index
-    @groups = current_user.groups.order('title asc')
+    if current_user
+      @groups = current_user.groups.order('title asc')
+    else
+      redirect_to root_path
+    end
   end
 
   def show

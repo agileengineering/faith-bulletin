@@ -1,5 +1,5 @@
 <%= form_for @group do |f| %>
-  <div class="field form-group">
+  <div class="form-group">
       <%= f.label :title %>
       <%= f.text_field :title, autofocus: true, class: 'form-control' %>
   </div>
@@ -45,6 +45,13 @@
   </div>
 
   <div class="actions">
-      <%= f.submit 'Save', class: 'btn btn-default' %>
+    <div class="row">
+      <div class="col-md-6 pull-right">
+        <%= f.submit 'Save', class: 'btn btn-default' %>
+      </div>
+      <div class="col-md-6">
+        <%= link_to 'Cancel', groups_path %>
+      </div>
+    </div>
   </div>
 <% end %>

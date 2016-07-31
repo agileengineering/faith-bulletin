@@ -18,6 +18,7 @@
  font-family: 'Puritan', sans-serif
 }
 
+/* NAVIGATION & LAYOUT */
 .navbar-inverse {
   background-color: #CB7904;
   border-color: #CB7904;
@@ -31,6 +32,29 @@
     color: #fff;
 }
 
+.navbar-inverse .navbar-brand {
+  color: #ffffff;
+  text-shadow: 1px 1px 3px #000000;
+}
+
+.navbar-header {
+  margin-bottom: 0px;
+}
+
+.messages {
+  margin-top: -25px;
+}
+
+.alert-success {
+  background-color: #fff;
+  border-color: #ccc;
+  color: #3c763d;
+}
+
+.template {
+  padding: 40px 15px;
+}
+
 header {
   margin: auto;
   margin: 0px 15px 0px auto;
@@ -42,61 +66,22 @@ header {
   background-color: #ffffff;
 }
 
+#nonroot-header {
+  visibility: hidden;
+}
+
+/* GENERAL */
 body {
-  text-align: center;
   background-color: #6D6Ac9;
 }
 
+.tiny {
+  font-size: 1em;
+  vertical-align: bottom;
+}
 
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Asul', sans-serif;  color: #ffffff;
+.white {
   color: #ffffff;
-  text-shadow: 1px 1px 3px #000000
-}
-
-/*  color: #5D91C0;
- opacity: 0.5;
- z-index: 1;  */
-
-.navbar-inverse .navbar-brand {
-  color: #ffffff;
-  text-shadow: 1px 1px 3px #000000;
-}
-
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
-}
-
-label {
-  font-size: 1.5em;
-  color: #ffffff;
-  text-shadow: 1px 1px 3px #000000;
-}
-
-.navbar-header {
-  margin-bottom: 0px;
-}
-.messages {
-  margin-top: -25px;
-}
-
-.field {
-  padding: 5px;
-}
-
-.form-control {
-  display: inline;
-  width: 40%;
-}
-
-#navbar-left {
-  visibility: hidden;
-}
-
-#nonroot-header {
-  visibility: hidden;
 }
 
 a {
@@ -107,6 +92,50 @@ a {
 .panel-body a {
   color: #6D6Ac9;
   text-decoration: none;
+}
+
+.panel-body h1, .panel-body h2, .panel-body h3, .panel-body h4 {
+  color: #6D6Ac9;
+  text-shadow: none;
+}
+
+/* HEADINGS */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Asul', sans-serif;  color: #ffffff;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px #000000
+}
+
+h1 small, h1 .small, h2 small, h2 .small, h3 small, h3 .small, h4 small, h4
+.small, h5 small, h5 .small, h6 small, h6 .small, .h1 small, .h1 .small, .h2
+small, .h2 .small, .h3 small, .h3 .small, .h4 small, .h4 .small, .h5 small, .h5
+.small, .h6 small, .h6 .small {
+  color: #efefef;
+}
+
+/*  color: #5D91C0;
+ opacity: 0.5;
+ z-index: 1;  */
+
+/* FORMS */
+label {
+  font-size: 1.5em;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px #000000;
+}
+
+.field {
+  padding: 5px;
+}
+
+/* TASKS */
+
+.task-title {
+  font-size: 1.5em;
+}
+
+.task-section {
+  margin-top: 40px;
 }
 
 /*!

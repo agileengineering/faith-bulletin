@@ -3,7 +3,7 @@
 <% end %>
 
 <h1><%= @group.title %></h1>
-<h2>Members</h2>
+<h2 class="white">Members</h2>
 
 <% @memberships.each do |membership| %>
   <div class="panel panel-default">
@@ -20,7 +20,7 @@
 
 
 <% if current_user.is_owner?(@group) %>
-  <h3>Add New Member</h3>
+  <h3 class="white">Add New Member</h3>
 
   <% if @new_member.errors.any? %>
     <div id="error_explanation" class="alert alert-danger">

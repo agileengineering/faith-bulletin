@@ -4,166 +4,96 @@
 
 <h1><%= @group.title %></h1>
 
-<% if user_signed_in? %>
-  <h2>My Tasks</h2>
-  <p>Sign up to fill a community need below.</p>
-  <% @group.tasks.where(user: current_user).each do |task| %>
-    <div class="panel panel-default">
-      <div class="row panel-body">
-        <div class="col-md-4">
-          <strong><%= task.title %></strong><br />
-          <%= task.description %>
-        </div>
-        <div class="col-md-2">
-            <%= task.deadline.to_formatted_s(:long) %>
-        </div>
-        <div class="col-md-2">
-            <%= task.category.title %>
-        </div>
-        <div class="col-md-2">
-            <% if task.user %>
-              <%= task.user.email %>
-            <% elsif user_signed_in? %>
-              <%= form_for task, url: claim_group_task_path(@group, task), method: 'put' do |f| %>
-                <%= f.submit "Sign Up", class: 'btn btn-xs' %>
-              <% end %>
-            <% end %>
-        </div>
-        <div class="col-md-2">
-          <% if task.incomplete? %>
-            <%= form_for task, url: mark_complete_group_task_path(@group, task), method: 'put' do |f| %>
-              <%= f.submit "Mark Complete", class: 'btn btn-xs' %>
-            <% end %>
-          <% else %>
-            <%= task.status.titleize %>
-          <% end %>
-        </div>
-        <% if current_user.is_owner?(@group) %>
-          <div class="col-md-2">
-            <%= link_to 'Edit', edit_group_task_path(@group, task) %>
-          </div>
-        <% end %>
-      </div>
-    </div>
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#mytasks" aria-controls="mytasks" role="tab" data-toggle="tab">My Assignments</a></li>
+  <li role="presentation"><a href="#needs" aria-controls="needs" role="tab" data-toggle="tab">Community Needs</a></li>
+  <% if current_user.is_owner?(@group) %>
+    <li role="presentation"><a href="#incomplete" aria-controls="incomplete" role="tab" data-toggle="tab">Incomplete Tasks</a></li>
+    <li role="presentation"><a href="#create" aria-controls="create" role="tab" data-toggle="tab">Create a Task</a></li>
   <% end %>
-<% end %>
+</ul>
 
-<h2>Community Needs</h2>
+<!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="mytasks">
+    <% if user_signed_in? %>
+      <h2 class="task-section">My Assignments</h2>
+      <p class="white">Check out the community needs tab for volunteer opportunities.</p>
+      <% @group.tasks.where(user: current_user).each do |task| %>
+        <%= render 'task_card', task: task %>
+      <% end %>
+    <% end %>
+  </div>
 
-<% @tasks.each do |task| %>
-  <div class="panel panel-default">
-    <div class="row panel-body">
-      <div class="col-md-4">
-        <strong><%= task.title %></strong><br />
-        <%= task.description %>
-      </div>
-      <div class="col-md-2">
-          <%= task.deadline.to_formatted_s(:long) %>
-      </div>
-      <div class="col-md-2">
-          <%= task.category.title %>
-      </div>
-      <div class="col-md-2">
-          <% if task.user %>
-            <%= task.user.email %>
-          <% elsif user_signed_in? %>
-            <%= form_for task, url: claim_group_task_path(@group, task), method: 'put' do |f| %>
-              <%= f.submit "Sign Up", class: 'btn btn-xs' %>
+  <div role="tabpanel" class="tab-pane" id="needs">
+    <h2 class="task-section">Community Needs</h2>
+    <% @tasks.each do |task| %>
+      <%= render 'task_card', task: task %>
+    <% end %>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="incomplete">
+    <% if current_user.is_owner?(@group) %>
+      <h2 class="task-section">Incomplete Tasks</h2>
+      <p class="white">Tasks claimed by members but not yet complete.</p>
+      <% @group.tasks.incomplete.each do |task| %>
+        <%= render 'task_card', task: task %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="create">
+    <% if current_user.is_owner?(@group) %>
+      <h2 class="task-section">Create new task</h2>
+
+      <% if @task.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <h3 class="white"><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h3>
+          <ul>
+            <% @task.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
             <% end %>
-          <% end %>
-      </div>
-      <% if current_user.is_owner?(@group) %>
-        <div class="col-md-2">
-          <%= link_to 'Edit', edit_group_task_path(@group, task) %>
+          </ul>
         </div>
       <% end %>
-    </div>
+
+      <%= form_for [@group, @task] do |f| %>
+        <div class="field form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control' %>
+        </div>
+
+        <div class="field form-group">
+            <%= f.label :description %>
+            <%= f.text_area :description, class: 'form-control' %>
+        </div>
+
+        <div class="field form-group">
+            <%= f.label :deadline %><br />
+            <%= f.datetime_select :deadline, class: 'form-control' %>
+        </div>
+
+        <div class="field form-group">
+          <%= f.label :user_id, 'Assigned to' %>
+          <%= f.collection_select(:user_id, User.order(:email), :id, :email, { include_blank: true }, { class: 'form-control' }) %>
+        </div>
+
+        <div class="field form-group">
+          <%= f.label :category_id, 'Category' %>
+          <%= f.collection_select(:category_id, @group.categories.order(:id), :id, :title, { }, { class: 'form-control' }) %>
+        </div>
+
+        <div class="actions">
+            <%= f.submit 'Save', class: 'btn btn-default' %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-<% end %>
+</div>
 
-<% if current_user.is_owner?(@group) %>
-  <h2>Incomplete Tasks</h2>
-  <p>Tasks claimed by members but not yet complete.</p>
-  <% @group.tasks.incomplete.each do |task| %>
-    <div class="panel panel-default">
-      <div class="row panel-body">
-        <div class="col-md-4">
-          <strong><%= task.title %></strong><br />
-          <%= task.description %>
-        </div>
-        <div class="col-md-2">
-            <%= task.deadline.to_formatted_s(:long) %>
-        </div>
-        <div class="col-md-2">
-            <%= task.category.title %>
-        </div>
-        <div class="col-md-2">
-            <% if task.user %>
-              <%= task.user.email %>
-            <% elsif user_signed_in? %>
-              <%= form_for task, url: claim_group_task_path(@group, task), method: 'put' do |f| %>
-                <%= f.submit "Sign Up", class: 'btn btn-xs' %>
-              <% end %>
-            <% end %>
-        </div>
-        <div class="col-md-2">
-          <% if task.incomplete? %>
-            <%= form_for task, url: mark_complete_group_task_path(@group, task), method: 'put' do |f| %>
-              <%= f.submit "Mark Complete", class: 'btn btn-xs' %>
-            <% end %>
-          <% else %>
-            <%= task.status.titleize %>
-          <% end %>
-        </div>
-        <div class="col-md-2">
-          <%= link_to 'Edit', edit_group_task_path(@group, task) %>
-        </div>
-      </div>
-    </div>
-  <% end %>
 
-  <h3>Create new task</h3>
 
-  <% if @task.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-      <h3><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h3>
-      <ul>
-        <% @task.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <%= form_for [@group, @task] do |f| %>
-    <div class="field form-group">
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'form-control' %>
-    </div>
-
-    <div class="field form-group">
-        <%= f.label :description %>
-        <%= f.text_area :description, class: 'form-control' %>
-    </div>
-
-    <div class="field form-group">
-        <%= f.label :deadline %>
-        <%= f.datetime_select :deadline, class: 'form-control' %>
-    </div>
-
-    <div class="field form-group">
-      <%= f.label :user_id, 'Assigned to' %>
-      <%= f.collection_select(:user_id, User.order(:email), :id, :email, { include_blank: true }, { class: 'form-control' }) %>
-    </div>
-
-    <div class="field form-group">
-      <%= f.label :category_id, 'Category' %>
-      <%= f.collection_select(:category_id, @group.categories.order(:id), :id, :title, { }, { class: 'form-control' }) %>
-    </div>
-
-    <div class="actions">
-        <%= f.submit 'Save', class: 'btn btn-default' %>
-    </div>
-  <% end %>
-<% end %>
 

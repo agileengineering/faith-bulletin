@@ -1,25 +1,48 @@
-<h1>My Groups</h1>
-
-<%= link_to new_group_path do %>
-    <button class="btn">New Group</button>
-<% end %>
+<div>
+  <div class="pull-right">
+    <%= link_to new_group_path do %>
+        <button class="btn btn-default">+ New Group</button>
+    <% end %>
+  </div>
+  <h1>My Groups</h1>
+</div>
 
 <% @groups.each do |group| %>
   <div class="panel panel-default">
-    <div class="row panel-body">
-      <div class="col-md-4">
-        <strong><%= link_to group.title, group_path(group) %></strong><br />
-        <%= group.description %>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-2">
+          <%= image_tag group.profile_pic.url(:thumb) %>
+        </div>
+        <div class="col-md-6">
+          <h2><%= link_to group.title, group_path(group) %></h2>
+          <p class="lead"><%= group.tagline %></p>
+        </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-4">
+          <address>
+            <%= group.address %>
+          </address>
+        </div>
+      </div>
+
       <% if current_user.is_owner?(group) %>
-        <div class="col-md-2">
-          <%= link_to 'Edit', edit_group_path(group) %>
-        </div>
-        <div class="col-md-2">
-          <%= link_to 'Manage Members', group_memberships_path(group) %>
-        </div>
-        <div class="col-md-2">
-          <%= link_to 'Manage Categories', group_categories_path(group) %>
+        <div class="row">
+          <div class="col-md-2">
+          </div>
+          <div class="col-md-1">
+            <%= link_to 'Edit', edit_group_path(group) %>
+          </div>
+          <div class="col-md-2">
+            <%= link_to 'Manage Members', group_memberships_path(group) %>
+          </div>
+          <div class="col-md-2">
+            <%= link_to 'Manage Categories', group_categories_path(group) %>
+          </div>
         </div>
       <% end %>
     </div>
