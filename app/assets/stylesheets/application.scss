@@ -212,7 +212,15 @@ label {
 
 .search-form label {
   font-family: 'Futura', sans-serif;
+  color: #333;
+  font-size: 1.3em;
+  line-height: 1.7;
 }
+
+.lead.group-tagline {
+  color: #333;
+}
+
 
 .clear-search {
   display: inline-block;
