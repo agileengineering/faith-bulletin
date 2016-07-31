@@ -2,6 +2,7 @@ class Group < ApplicationRecord
   has_many :memberships
   has_many :users, through: :memberships
   has_many :categories
+  has_many :tasks, through: :categories
 
   validates :title, presence: true, length: { in: 1..255 }
 

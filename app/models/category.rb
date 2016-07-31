@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   belongs_to :group
-  has_many   :categories
+  has_many   :tasks
 
   enum status: {
     incomplete:  1,

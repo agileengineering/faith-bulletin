@@ -1,9 +1,17 @@
-<%= link_to groups_path do %>
-  &#8592; Back to Groups
+<% if user_signed_in? %>
+  <%= link_to groups_path do %>
+    &#8592; Back to Groups
+  <% end %>
 <% end %>
 
 <h1><%= @group.title %></h1>
 <p><%= @group.description %></p>
+
+<% if current_user and current_user.groups.include? @group %>
+  <h3>Community Needs</h3>
+  <%= link_to 'All Needs', group_tasks_path(@group) %>
+<% end %>
+
 
 <h3><%= @group.memberships.count %> Members</h3>
 <% if current_user and current_user.groups.include? @group %>

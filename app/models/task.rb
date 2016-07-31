@@ -7,6 +7,8 @@ class Task < ApplicationRecord
     complete:    2,
   }
 
+  scope :unassigned, -> { where(user: nil) }
+
   validates :title,           presence: true, length: { in: 1..255 }
 
   def claim(u)

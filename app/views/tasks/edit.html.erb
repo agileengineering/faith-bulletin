@@ -1,4 +1,4 @@
-<%= link_to tasks_path do %>
+<%= link_to group_tasks_path(@group) do %>
   &#8592; Back to Tasks
 <% end %>
 
@@ -6,4 +6,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Cancel', tasks_path %>
+<%= link_to 'Cancel', group_tasks_path(@group) %>
+

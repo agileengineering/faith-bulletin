@@ -8,13 +8,13 @@ Rails.application.routes.draw do
   resources :groups do
     resources :memberships
     resources :categories
-  end
-
-  resources :tasks do
-    member do
-      put 'claim'
-      put 'mark_complete'
+    resources :tasks do
+      member do
+        put 'claim'
+        put 'mark_complete'
+      end
     end
   end
+
 end
 
