@@ -11,17 +11,97 @@
  * It is generally better to create a new file per style scope.
  *
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+* {
+ font-family: 'Puritan', sans-serif
+}
+
+.navbar-inverse {
+  background-color: #CB7904;
+  border-color: #CB7904;
+  font-weight: bold;
+  color: white;
+  opacity: 1;
+}
+
+.navbar-inverse
+.navbar-nav > li > a {
+    color: #fff;
+
+  }
+
+
+
+
+header {
+  margin: auto;
+  margin: 0px 15px 0px auto;
+  padding-top: 80px;
+  padding-bottom: 20px;
+}
+
+.header-wrapper {
+  background-color: #ffffff;
+}
 
  body {
-   padding-top: 50px;
+  text-align: center;
+  background-color: #6D6Ac9;
  }
+
+
+
+ h1, h2, h3, h4, h5, h6 {
+  font-family: 'Asul', sans-serif;  color: #ffffff;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px #000000
+ }
+
+/*  color: #5D91C0;
+ opacity: 0.5;
+ z-index: 1;  */
+
+ .navbar-inverse .navbar-brand {
+    color: #ffffff;
+    text-shadow: 1px 1px 3px #000000;
+}
 
  .starter-template {
    padding: 40px 15px;
    text-align: center;
+  }
+
+label {
+font-size: 1.5em;
+color: #ffffff;
+text-shadow: 1px 1px 3px #000000;
 }
+
+.navbar-header {
+margin-bottom: 0px;
+}
+.messages {
+margin-top: -25px;
+}
+
+.field {
+padding: 5px;
+}
+
+.form-control {
+  display: inline;
+  width: 40%;
+}
+
+#navbar-left {
+  visibility: hidden;
+}
+
+#nonroot-header {
+  visibility: hidden;}
+
 
 /*!
  *  * IE10 viewport hack for Surface/desktop Windows 8 bug
@@ -36,4 +116,3 @@
 @-ms-viewport     { width: device-width; }
 @-o-viewport      { width: device-width; }
 @viewport         { width: device-width; }
-
