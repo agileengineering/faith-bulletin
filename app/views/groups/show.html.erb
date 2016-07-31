@@ -52,8 +52,17 @@
     <div class="col-md-8">
       <div class="panel panel-default">
         <div class="panel-body">
+          <h3>
+            My Assignments
+            <small class="section-link"><%= link_to 'View All', group_tasks_path(@group) %></small>
+          </h3>
+          <% @group.tasks.where(user: current_user).each do |task| %>
+            <%= render 'tasks/task_card', task: task %>
+          <% end %>
           <h3>Community Needs</h3>
-          <%= link_to 'All Needs', group_tasks_path(@group) %>
+          <% @group.tasks.unassigned.each do |task| %>
+            <%= render 'tasks/task_card', task: task %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -61,11 +70,23 @@
     <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-body">
-          <h3><%= @group.memberships.count %> Members</h3>
-          <%= link_to 'All Members', group_memberships_path(@group) %>
+          <h3>
+            <%= @group.memberships.count %> Members
+            <small class="section-link"><%= link_to 'View All', group_memberships_path(@group) %></small>
+          </h3>
+          <p>Most recently active</p>
           <ul class="list-unstyled">
-            <% @group.memberships.each do |member| %>
-              <li><%= member.user.email %></li>
+            <% @recently_active_members.each do |member| %>
+             <li>
+               <div class="row">
+                 <div class="col-sm-6">
+                   <%= member.email %>
+                 </div>
+                 <div class="col-sm-6">
+                   <small><%= time_ago_in_words(member.last_sign_in_at) %> ago</small>
+                </div>
+               </div>
+             </li>
             <% end %>
           </ul>
         </div>

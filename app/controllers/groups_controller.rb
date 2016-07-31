@@ -10,6 +10,11 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @recently_active_members = User
+      .joins('LEFT JOIN memberships ON memberships.user_id = users.id')
+      .where('memberships.group_id = ?', @group.id)
+      .order('last_sign_in_at desc')
+      .limit(10)
   end
 
   def new
